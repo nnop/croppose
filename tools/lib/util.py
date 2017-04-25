@@ -11,7 +11,7 @@ def config_logger(logfn=''):
     # root logger
     logger = logging.getLogger()
     # level
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
     # handlers
     s_hdr = logging.StreamHandler()
     s_hdr.setFormatter(log_fmt)

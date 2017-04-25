@@ -42,8 +42,8 @@ def sample_part(in_root_dir, out_root_dir, sub_d, num):
         dst_xml_path = path.join(dst_xml_dir, xml_fn)
         shutil.copyfile(src_image_path, dst_image_path)
         shutil.copyfile(src_xml_path, dst_xml_path)
-        logging.info('{} -> {}'.format(src_image_path, dst_image_path))
-        logging.info('{} -> {}'.format(src_xml_path, dst_xml_path))
+        logging.debug('{} -> {}'.format(src_image_path, dst_image_path))
+        logging.debug('{} -> {}'.format(src_xml_path, dst_xml_path))
     logging.info('sampled {} to {}'.format(num, out_root_dir))
 
 if __name__ == "__main__":
