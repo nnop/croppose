@@ -7,6 +7,7 @@ input:
 output:
     new output folder under output_root folder
 """
+import os
 from os import path
 import argparse
 from glob import glob
@@ -20,8 +21,15 @@ def get_data_dirs(d):
     return path.join(d, 'Frame'), path.join(d, 'xml')
 
 def sample_part(in_root_dir, out_root_dir, sub_d, num):
+
     src_image_dir, src_xml_dir = get_data_dirs(path.join(in_root_dir, sub_d))
     dst_image_dir, dst_xml_dir = get_data_dirs(path.join(out_root_dir, sub_d))
+    if not path.isdir(dst_image_dir):
+        logging.info('creating {}'.format(dst_image_dir))
+        os.makedirs(dst_image_dir)
+    if not path.isdir(dst_xml_dir):
+        logging.info('creating {}'.format(dst_xml_dir))
+        os.makedirs(dst_xml_dir)
 
     # get images
     image_list = glob(src_image_dir, '*.jpg')
@@ -38,15 +46,19 @@ def sample_part(in_root_dir, out_root_dir, sub_d, num):
         logging.info('{} -> {}'.format(src_xml_path, dst_xml_path))
 
 if __name__ == "__main__":
+    # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('in_root_dir', help='input folder containing training data')
     parser.add_argument('out_root_dir', help='output folder created under this folder')
     args = parser.parse_args()
+    # config logger
     config_logger()
-
     # select N samples and output to dest folder
     sub_dirs = ['training/classroom1',
                 'validation/classroom1',
                 'validation/classroom2']
+    in_root_dir = args.in_root_dir[:-1] if args.in_root_dir[-1]=='/' else args.in_root_dir
+    task_name = path.split(in_root_dir)[1]
+    out_root_dir = path.join(args.out_root_dir, task_name)
     for sub_d in sub_dirs:
-        sample_part(in_root_dir, out_root_dir, sub_d, 10)
+        sample_part(args.in_root_dir, out_root_dir, sub_d, 10)
