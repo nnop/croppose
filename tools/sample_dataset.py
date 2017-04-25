@@ -32,7 +32,7 @@ def sample_part(in_root_dir, out_root_dir, sub_d, num):
         os.makedirs(dst_xml_dir)
 
     # get images
-    image_list = glob(src_image_dir, '*.jpg')
+    image_list = glob(path.join(src_image_dir, '*.jpg'))
     image_list = random.sample(image_list, num)
     for src_image_path in image_list:
         image_fn = path.split(src_image_path)[1]
