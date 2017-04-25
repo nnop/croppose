@@ -15,7 +15,7 @@ import random
 import shutil
 import logging
 
-from .lib import config_logger
+from lib.util import config_logger
 
 def get_data_dirs(d):
     return path.join(d, 'Frame'), path.join(d, 'xml')
