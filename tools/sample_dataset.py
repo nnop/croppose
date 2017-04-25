@@ -44,12 +44,14 @@ def sample_part(in_root_dir, out_root_dir, sub_d, num):
         shutil.copyfile(src_xml_path, dst_xml_path)
         logging.info('{} -> {}'.format(src_image_path, dst_image_path))
         logging.info('{} -> {}'.format(src_xml_path, dst_xml_path))
+    logging.info('sampled {} to {}'.format(num, out_root_dir))
 
 if __name__ == "__main__":
     # parse arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('in_root_dir', help='input folder containing training data')
     parser.add_argument('out_root_dir', help='output folder created under this folder')
+    parser.add_argument('--num', type=int, default=10, help='number of samples to sample')
     args = parser.parse_args()
     # config logger
     config_logger()
