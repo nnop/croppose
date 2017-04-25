@@ -10,6 +10,8 @@ def config_logger(logfn=''):
     log_fmt = logging.Formatter(s_fmt)
     # root logger
     logger = logging.getLogger()
+    # level
+    logger.setLevel(logging.DEBUG)
     # handlers
     s_hdr = logging.StreamHandler()
     s_hdr.setFormatter(log_fmt)
