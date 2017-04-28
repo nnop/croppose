@@ -1,2 +1,9 @@
 *.pyc
 *.swp
+*.pdf
+*.jpg
+lists/
+data/
+lmdb/
+dataset
+

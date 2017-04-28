@@ -6,6 +6,10 @@
 
 3. joint training, sharing all features
 
+# todo 
+
+- parallel processing logging
+
 # data dirs
 
 ```
@@ -21,3 +25,16 @@
 ```
 
 # show some sample
+
+2017-04-29
+
+- finished tools/show_sample.py
+
+
+# train classification network
+
+1. create datasets
+2. train network
+3. evaluate
+
+2017-04-28
